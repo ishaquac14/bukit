@@ -8,5 +8,5 @@
         @endforeach
         <li class="page-item"><a class="page-link" href="{{ $books->nextPageUrl() }}">Next</a></li>
     </ul>
-</nav>
+</nav>  
 

@@ -20,7 +20,7 @@ class InfoController extends Controller
                         ->orWhere('date', 'LIKE', '%' . $searchTerm . '%');
                 }
             })
-            ->paginate(5);
+            ->paginate(10);
 
         return view('pages.info.index', compact('infos'));
     }    

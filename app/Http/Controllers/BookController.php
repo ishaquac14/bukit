@@ -22,7 +22,7 @@ class BookController extends Controller
                         ->orWhere('date', 'LIKE', '%' . $searchTerm . '%');
                 }
             })
-            ->paginate(5);
+            ->paginate(10);
 
         return view('pages.book.index', compact('books'));
     }    
