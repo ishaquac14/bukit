@@ -36,7 +36,7 @@
                 @if($books->count() > 0)
                 @foreach ($books as $book)
                 <tr class="table-light"> <!-- Tambahkan kelas ini untuk tampilan yang lebih baik -->
-                    <td class="align-middle">{{ $loop->iteration }}</td>
+                    <td class="align-middle text-center">{{ $loop->iteration }}</td>
                     <td class="align-middle">{{ $book->name }}</td>
                     <td class="align-middle">{{ $book->author }}</td>
                     <td class="align-middle text-center">{{ \Carbon\Carbon::parse($book->date)->format('d-m-Y') }}</td>

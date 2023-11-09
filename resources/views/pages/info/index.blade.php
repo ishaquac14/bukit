@@ -22,25 +22,25 @@
     </div>
     @endif
     <div class="table-responsive">
-        <table id="example" class="table table-striped" style="width:100%">
-            <thead class="table-primary">
+        <table id="example" class="table table-striped table-bordered">
+            <thead class="table-primary text-center">
                 <tr>
-                    <th>No</th>
+                    <th width="2%">No</th>
                     <th>Information</th>
-                    <th>Author</th>
+                    <th width="30%">Author</th>
                     <th>Date</th>
-                    <th>Action</th>
+                    <th width="20%">Action</th>
                 </tr>
             </thead>
             <tbody>
                 @if($infos->count() > 0)
                 @foreach ($infos as $info)
                 <tr class="table-light"> <!-- Tambahkan kelas ini untuk tampilan yang lebih baik -->
-                    <td class="align-middle">{{ $loop->iteration }}</td>
+                    <td class="align-middle text-center">{{ $loop->iteration }}</td>
                     <td class="align-middle">{{ $info->name }}</td>
                     <td class="align-middle">{{ $info->author }}</td>
-                    <td class="align-middle">{{ \Carbon\Carbon::parse($info->date)->format('d-m-Y') }}</td>
-                    <td class="align-middle">
+                    <td class="align-middle text-center">{{ \Carbon\Carbon::parse($info->date)->format('d-m-Y') }}</td>
+                    <td class="align-middle text-center">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a href="{{ route('info.show', $info->id) }}" class="btn btn-secondary">Detail</a>
                             <a href="{{ route('info.edit', $info->id) }}" class="btn btn-warning">Edit</a>
