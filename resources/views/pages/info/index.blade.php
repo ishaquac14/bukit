@@ -36,7 +36,7 @@
                 @if($infos->count() > 0)
                 @foreach ($infos as $info)
                 <tr class="table-light"> <!-- Tambahkan kelas ini untuk tampilan yang lebih baik -->
-                    <td class="align-middle text-center">{{ $loop->iteration }}</td>
+                    <td class="align-middle text-center">{{ $info->id }}</td>
                     <td class="align-middle">{{ $info->name }}</td>
                     <td class="align-middle">{{ $info->author }}</td>
                     <td class="align-middle text-center">{{ \Carbon\Carbon::parse($info->date)->format('d-m-Y') }}</td>

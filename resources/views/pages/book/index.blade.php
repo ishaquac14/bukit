@@ -33,10 +33,15 @@
                 </tr>
             </thead>
             <tbody>
+                @php
+                $pageNumber = $books->currentPage(); // Mendapatkan nomor halaman saat ini
+                $itemsPerPage = $books->perPage(); // Mendapatkan jumlah item per halaman
+                $baseNumber = ($pageNumber - 1) * $itemsPerPage + 1; // Menghitung nomor awal untuk halaman saat ini
+                @endphp
                 @if($books->count() > 0)
                 @foreach ($books as $book)
                 <tr class="table-light"> <!-- Tambahkan kelas ini untuk tampilan yang lebih baik -->
-                    <td class="align-middle text-center">{{ $loop->iteration }}</td>
+                    <td class="align-middle text-center">{{ $baseNumber + $loop->index }}</td>
                     <td class="align-middle">{{ $book->name }}</td>
                     <td class="align-middle">{{ $book->author }}</td>
                     <td class="align-middle text-center">{{ \Carbon\Carbon::parse($book->date)->format('d-m-Y') }}</td>

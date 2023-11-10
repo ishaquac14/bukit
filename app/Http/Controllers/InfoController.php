@@ -8,22 +8,40 @@ use Illuminate\Http\Request;
 class InfoController extends Controller
 {
 
+    // public function index(Request $request)
+    // {
+    //     $searchTerm = $request->input('search');
+
+    //     $infos = Info::orderBy('id', 'ASC');
+    //         ->where(function ($query) use ($searchTerm) {
+    //             if ($searchTerm) {
+    //                 $query->where('name', 'LIKE', '%' . $searchTerm . '%')
+    //                     ->orWhere('author', 'LIKE', '%' . $searchTerm . '%')
+    //                     ->orWhere('date', 'LIKE', '%' . $searchTerm . '%');
+    //             }
+    //         })
+    //         ->paginate(10);
+
+    //     return view('pages.info.index', compact('infos'));
+    // }
     public function index(Request $request)
     {
         $searchTerm = $request->input('search');
-
-        $infos = Info::orderBy('created_at', 'DESC')
-            ->where(function ($query) use ($searchTerm) {
-                if ($searchTerm) {
-                    $query->where('name', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('author', 'LIKE', '%' . $searchTerm . '%')
-                        ->orWhere('date', 'LIKE', '%' . $searchTerm . '%');
-                }
-            })
-            ->paginate(10);
-
+    
+        $query = Info::orderBy('id', 'ASC');
+    
+        if ($searchTerm) {
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('name', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('author', 'LIKE', '%' . $searchTerm . '%')
+                    ->orWhere('date', 'LIKE', '%' . $searchTerm . '%');
+            });
+        }
+    
+        $infos = $query->paginate(10);
+    
         return view('pages.info.index', compact('infos'));
-    }    
+    }   
     /**
      * Show the form for creating a new resource.
      */
