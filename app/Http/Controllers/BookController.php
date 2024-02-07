@@ -12,20 +12,7 @@ class BookController extends Controller
      */
     public function index(Request $request)
     {
-        $searchTerm = $request->input('search');
-    
-        $query = Book::orderBy('id', 'DESC');
-    
-        if ($searchTerm) {
-            $query->where(function ($q) use ($searchTerm) {
-                $q->where('name', 'LIKE', '%' . $searchTerm . '%')
-                    ->orWhere('author', 'LIKE', '%' . $searchTerm . '%')
-                    ->orWhere('date', 'LIKE', '%' . $searchTerm . '%');
-            });
-        }
-    
-        $books = $query->paginate(10);
-    
+        $books = Book::orderBy('id', 'DESC');
         return view('pages.book.index', compact('books'));
     }
         

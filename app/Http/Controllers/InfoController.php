@@ -9,20 +9,7 @@ class InfoController extends Controller
 {
     public function index(Request $request)
     {
-        $searchTerm = $request->input('search');
-    
-        $query = Info::orderBy('id', 'DESC');
-    
-        if ($searchTerm) {
-            $query->where(function ($q) use ($searchTerm) {
-                $q->where('name', 'LIKE', '%' . $searchTerm . '%')
-                    ->orWhere('author', 'LIKE', '%' . $searchTerm . '%')
-                    ->orWhere('date', 'LIKE', '%' . $searchTerm . '%');
-            });
-        }
-    
-        $infos = $query->paginate(10);
-    
+        $infos = Info::orderBy('id', 'DESC');
         return view('pages.info.index', compact('infos'));
     }   
     /**
