@@ -3,72 +3,73 @@
 @section('head')
     <link rel="stylesheet" href="{{ asset('css/sidebar.css') }}">
 @endsection
+
 @section('body')
 <div class="container">
-    <div class="d-flex align-items-center justify-content-between">
-        <h2>List Informasi</h2>
-        <a href="{{ route('info.create') }}" class="btn btn-primary mb-2">Add Informasi</a>     
+    <div class="d-flex align-items-center justify-content-between mt-5 mb-5">
+        <h3>List Informasi</h3>
+        <a href="{{ route('info.create') }}" class="btn btn-primary">Tambah</a>     
     </div>
-        <div class="col-md-3 offset-md-9">
-        <form action="/info" class="d-flex ml-auto" method="GET">
-            <input class="form-control me-2" type="search" name="search" placeholder="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        </div>
-    <hr>
+    
     @if(Session::has('success'))
     <div class="alert alert-success" role="alert">
         {{ Session::get('success') }}
     </div>
     @endif
-    <div class="table-responsive">
-        <table id="example" class="table table-striped table-bordered">
+
+    @if(Session::has('danger'))
+    <div class="alert alert-danger" role="alert">
+        {{ Session::get('danger') }}
+    </div>
+    @endif
+
+
+     <table id="myTable" class="table-bordered table-striped table-hover" style="width: 100%">
             <thead class="table-primary text-center">
                 <tr>
-                    <th width="2%">No</th>
-                    <th>Information</th>
-                    <th width="30%">Author</th>
-                    <th>Date</th>
-                    <th width="20%">Action</th>
+                    <th class="text-center align-middle">No</th>
+                    <th class="text-center align-middle">Information</th>
+                    <th class="text-center align-middle">Author</th>
+                    <th class="text-center align-middle">Date</th>
+                    <th class="text-center align-middle">Action</th>
                 </tr>
             </thead>
             <tbody>
-                @php
-                $pageNumber = $infos->currentPage(); // Mendapatkan nomor halaman saat ini
-                $itemsPerPage = $infos->perPage(); // Mendapatkan jumlah item per halaman
-                $baseNumber = ($pageNumber - 1) * $itemsPerPage + 1; // Menghitung nomor awal untuk halaman saat ini
-                @endphp
-                @if($infos->count() > 0)
+
                 @foreach ($infos as $info)
-                <tr class="table-light"> <!-- Tambahkan kelas ini untuk tampilan yang lebih baik -->
-                    <td class="align-middle text-center">{{ $baseNumber + $loop->index }}</td>
-                    <td class="align-middle">{{ $info->name }}</td>
-                    <td class="align-middle">{{ $info->author }}</td>
+                <tr class="table-light">
+                    <td class="align-middle text-center">{{ $loop->iteration }}</td>
+                    <td class="align-middle text-center">{{ $info->name }}</td>
+                    <td class="align-middle text-center">{{ $info->author }}</td>
                     <td class="align-middle text-center">{{ \Carbon\Carbon::parse($info->date)->format('d-m-Y') }}</td>
                     <td class="align-middle text-center">
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="{{ route('info.show', $info->id) }}" class="btn btn-secondary">Detail</a>
-                            <a href="{{ route('info.edit', $info->id) }}" class="btn btn-warning">Edit</a>
+                            <form action="{{ route('info.show', $info->id) }}" style="margin-right: 5px" method="GET">
+                                <button type="submit" class="btn btn-secondary">Detail</button>
+                            </form>
+                            <form action="{{ route('info.edit', $info->id) }}" style="margin-right: 5px" method="GET">
+                                <button type="submit" class="btn btn-warning">Edit</button>
+                            </form>
                             <form action="{{ route('info.destroy', $info->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Hapus</button>
                             </form>
                         </div>
-                    </td>
+                    </td>                                        
                 </tr>
                 @endforeach
-                @else
-                <tr>
-                    <td class="text-center" colspan="5">Laporan tidak ditemukan</td>
-                </tr>
-                @endif
+                
             </tbody>
         </table>
-        @include('layouts.pagination-info', ['infos' => $infos])
     </div>
 </div>
 @endsection
-@section('scripts')
-    <script src="{{ asset('js/sidebar.js') }}"></script>
-@endsection
+
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>

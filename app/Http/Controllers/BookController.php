@@ -51,7 +51,7 @@ class BookController extends Controller
         ]);
 
         Book::create($request->all());
-        return redirect()->route('book.index')->with('success', 'Laporan Add successfuly');
+        return redirect()->route('book.index')->with('success', 'Data Berhasil Ditambahkan !');
     }
     /**
      * Display the specified resource.
@@ -78,7 +78,7 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
         $book->update($request->all());
-        return redirect()->route('book.index')->with('success', 'Laporan Updated successfuly');
+        return redirect()->route('book.index')->with('success', 'Data Berhasil Diupdate !');
     }
 
     /**
@@ -88,6 +88,6 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
         $book->delete();
-        return redirect()->route('book.index')->with('success', 'Laporan Deleted successfuly');
+        return redirect()->route('book.index')->with('danger', 'Data Berhasil Dihapus !');
     }
 }

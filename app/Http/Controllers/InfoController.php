@@ -47,7 +47,7 @@ class InfoController extends Controller
         ]);
 
         Info::create($request->all());
-        return redirect()->route('info.index')->with('success', 'Information Add successfuly');
+        return redirect()->route('info.index')->with('success', 'Data Berhasil Ditambahkan !');
     }
     /**
      * Display the specified resource.
@@ -74,7 +74,7 @@ class InfoController extends Controller
     {
         $info = Info::findOrFail($id);
         $info->update($request->all());
-        return redirect()->route('info.index')->with('success', 'Information Updated successfuly');
+        return redirect()->route('info.index')->with('success', 'Data Berhasil Diupdate !');
     }
 
     /**
@@ -84,7 +84,7 @@ class InfoController extends Controller
     {
         $info = Info::findOrFail($id);
         $info->delete();
-        return redirect()->route('info.index')->with('success', 'Information Deleted successfuly');
+        return redirect()->route('info.index')->with('danger', 'Data Berhasil Dihapus !');
     }
 }
 

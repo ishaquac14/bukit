@@ -2,11 +2,11 @@
 
 @section('body')
 <div class="container">
-    <div class="d-flex align-items-center justify-content-between">
-        <h2 class="mb-0">Tambahkan Informasi</h2>
+    <div class="d-flex align-items-center justify-content-between mt-5 mb-5">
+        <h3 class="mb-0">Create Informasi</h3>
         <a href="{{ route('info.index') }}" class="btn btn-secondary">Back</a>
     </div>
-    <hr>
+    
     <form action="{{ route('info.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
@@ -34,7 +34,7 @@
                 <textarea class="form-control" name="description" placeholder="description" rows="5"></textarea>
             </div>
         </div>
-        <div class="row mt-3">
+        <div class="row mt-5">
             <div class="col">
                 <div class="d-grid">
                     <button class="btn btn-primary">Submit</button>
