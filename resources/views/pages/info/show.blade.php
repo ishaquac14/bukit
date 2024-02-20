@@ -28,11 +28,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 mt-3">
+        <div class="col-md-6 mt-3 mb-5">
             <label class="form-label">Created At</label>
             <input type="text" name="created_at" class="form-control" placeholder="Created At" value="{{ $info->created_at->format('Y-m-d H:i:s') }}" readonly>
         </div>
-        <div class="col-md-6 mt-3">
+        <div class="col-md-6 mt-3 mb-5">
             <label class="form-label">Updated At</label>
             <input type="text" name="updated_at" class="form-control" placeholder="Updated At" value="{{ $info->updated_at->format('Y-m-d H:i:s') }}" readonly>
         </div>

@@ -31,7 +31,7 @@
             </div>
             <div class="col-md-6">
                 <label class="form-label">Description</label>
-                <textarea class="form-control" name="description" placeholder="description" rows="5"></textarea>
+                <textarea class="form-control" name="description" placeholder="description" rows="5">Info :</textarea>
             </div>
         </div>
         <div class="row mt-5">

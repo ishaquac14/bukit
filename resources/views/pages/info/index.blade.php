@@ -27,7 +27,7 @@
      <table id="myTable" class="table-bordered table-striped table-hover" style="width: 100%">
             <thead class="table-primary text-center">
                 <tr>
-                    <th class="text-center align-middle">No</th>
+                    <th class="text-center" style="height: 40px">No</th>
                     <th class="text-center align-middle">Information</th>
                     <th class="text-center align-middle">Author</th>
                     <th class="text-center align-middle">Date</th>

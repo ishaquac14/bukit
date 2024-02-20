@@ -24,20 +24,9 @@
 
     @yield('body')
 
-    <!-- Footer-->
-    <div class="mt-5" style="font-size: 10px">
-        <footer class="py-2 fixed-bottom" style="background-color: rgb(174, 174, 174)">
-            <div class="container">
-                <p class="m-0 text-center text-white">Copyright &copy; IT Development 2023</p>
-            </div>
-        </footer>
-    </div>
-    <!-- Bootstrap core JS-->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> --}}
-    <!-- Core theme JS-->
     <script src="{{ asset('sb-admin') }}/js/scripts.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-</body>
 
+</body>
 </html>

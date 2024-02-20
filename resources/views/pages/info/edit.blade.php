@@ -35,7 +35,7 @@
                 <textarea class="form-control" name="description" placeholder="description" rows="{{ substr_count($info->description, "\n") + 1 }}">{{ $info->description }}</textarea>
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-5 mb-5">
             <div class="col">
                 <div class="d-grid">
                     <button class="btn btn-warning">Update</button>

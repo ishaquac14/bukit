@@ -9,7 +9,7 @@ class InfoController extends Controller
 {
     public function index(Request $request)
     {
-        $infos = Info::orderBy('id', 'DESC');
+        $infos = Info::orderBy('id', 'DESC')->get();
         return view('pages.info.index', compact('infos'));
     }   
     /**
